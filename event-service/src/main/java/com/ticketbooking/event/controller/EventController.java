@@ -46,4 +46,17 @@ public class EventController {
     public ResponseEntity<List<SeatResponse>> getAvailableSeats(@PathVariable("eventId") UUID eventId) {
         return ResponseEntity.ok(eventService.getAvailableSeats(eventId));
     }
+
+    @GetMapping("/seats/{seatId}")
+    public ResponseEntity<SeatResponse> getSeat(@PathVariable("seatId") UUID seatId) {
+        return ResponseEntity.ok(eventService.getSeat(seatId));
+    }
+
+    @PutMapping("/seats/{seatId}/status")
+    public ResponseEntity<SeatResponse> updateSeatStatus(
+            @PathVariable("seatId") UUID seatId,
+            @RequestParam("status") com.ticketbooking.event.entity.SeatStatus status
+    ) {
+        return ResponseEntity.ok(eventService.updateSeatStatus(seatId, status));
+    }
 }

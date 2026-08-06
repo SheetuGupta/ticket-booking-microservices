@@ -110,6 +110,22 @@ public class EventService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
+    public SeatResponse getSeat(UUID seatId) {
+        Seat seat = seatRepository.findById(seatId)
+                .orElseThrow(() -> new IllegalArgumentException("Seat not found"));
+        return mapToSeatResponse(seat);
+    }
+
+    @Transactional
+    public SeatResponse updateSeatStatus(UUID seatId, SeatStatus status) {
+        Seat seat = seatRepository.findById(seatId)
+                .orElseThrow(() -> new IllegalArgumentException("Seat not found"));
+        seat.setStatus(status);
+        Seat updatedSeat = seatRepository.save(seat);
+        return mapToSeatResponse(updatedSeat);
+    }
+
     private String getRowLetter(int rowNum) {
         StringBuilder sb = new StringBuilder();
         while (rowNum > 0) {
