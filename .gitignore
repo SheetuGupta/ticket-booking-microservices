@@ -41,10 +41,18 @@ out/
 /nbdist/
 
 # Visual Studio Code
-.vscode/launch.json
-.vscode/tasks.json
-# Uncomment the line below if you want to ignore all VS Code settings:
-# .vscode/
+.vscode/
+
+# JVM crash logs and memory dumps
+hs_err_pid*
+replay_pid*
+*.hprof
+
+# Local properties / secrets overrides (for DB usernames/passwords)
+*local.properties
+*local.yml
+*local.yaml
+.spring-boot-devtools-restart.txt
 
 # OS Specific Files
 .DS_Store
