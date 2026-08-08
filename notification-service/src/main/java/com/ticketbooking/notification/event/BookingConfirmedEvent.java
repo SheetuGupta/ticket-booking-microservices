@@ -8,7 +8,7 @@ public record BookingConfirmedEvent(
     UUID bookingId,
     UUID userId,
     UUID eventId,
-    UUID seatId,
+    String seatId,
     BigDecimal amount,
     String transactionId,
     LocalDateTime confirmedAt

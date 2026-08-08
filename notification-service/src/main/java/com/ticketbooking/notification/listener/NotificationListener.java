@@ -34,6 +34,7 @@ public class NotificationListener {
             containerFactory = "bookingKafkaListenerContainerFactory"
     )
     public void handleBookingConfirmed(BookingConfirmedEvent event) {
+        log.info("NOTIFICATION SENT: Booking {} confirmed for user {}!", event.bookingId(), event.userId());
         log.info("==================== BOOKING CONFIRMATION EMAIL ====================");
         log.info("To User ID     : {}", event.userId());
         log.info("Subject        : Booking Confirmation for Booking Ref: {}", event.bookingId());
